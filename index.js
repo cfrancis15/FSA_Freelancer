@@ -33,19 +33,29 @@ function freelancer(){
 
 let freelancers = []
 
-for(i=0; i<NUM_FREELANCERS;i++){
-    let newFreelancer = freelancer()
-    freelancers.push({newFreelancer})
+
+function freelancerArray(){
+    for(i=0; i<NUM_FREELANCERS;i++){
+        let newFreelancer = freelancer()
+        freelancers.push(newFreelancer)
+    }
+
+    console.log(`Length of freelancers array: ${freelancers.length} fellas`)
+    console.log(freelancers)
 }
 
-console.log(`Length of freelancers array: ${freelancers.length} fellas`)
-console.log(freelancers)
+freelancerArray()
 
-//Question 3 average rate of all freelancers
+//Question 3 and 4 average rate of all freelancers
 
-let avgFreelancerRate = freelancers.reduce((total, num)=>total + num.newFreelancer.rate, 0)/freelancers.length
+//.reduce is our summing function. (total, the number we're on) => total + num.newFreelancer.rate, starting at 0 / number of freelancers we have. This gives us average rate.
+let avgFreelancerRate 
 
-console.log(avgFreelancerRate);
+function avgRate(){
+    avgFreelancerRate = freelancers.reduce((total, num)=>total + num.rate, 0)/freelancers.length
+    console.log(avgFreelancerRate)
+}
+
+avgRate()
 
 
-//Question 4
