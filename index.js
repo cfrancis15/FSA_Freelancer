@@ -35,7 +35,7 @@ let freelancers = []
 
 
 function freelancerArray(){
-    for(i=0; i<NUM_FREELANCERS;i++){
+    for(let i=0; i<NUM_FREELANCERS;i++){
         let newFreelancer = freelancer()
         freelancers.push(newFreelancer)
     }
@@ -59,3 +59,64 @@ function avgRate(){
 avgRate()
 
 
+//Question 5: representing a single freelancer
+
+function freelancerCard(freelancer){
+    const {name, occupation, rate } = freelancer
+
+    const $card = document.createElement("article");
+    $card.classList.add('card')
+    $card.innerHTML = `
+        <p class='operation'>${name}</p>
+        <p>${occupation}</p>
+        <p>${rate}</p>
+    `;
+
+    return $card
+    
+}
+
+
+
+
+//Question 6: Write a component function to represent an array of freelancers.
+
+function freelancerCards(){
+    const $container = document.createElement("article");
+    $container.classList.add("cards");
+
+
+    const $cards = freelancers.map(freelancerCard)
+    $container.replaceChildren(...$cards)
+
+    return $container
+}
+
+//Question 7: avg rate card
+
+function avgRateCard(){
+
+    const $card = document.createElement("article");
+    $card.classList.add('card')
+    $card.innerHTML = `
+        <p>Average Rate: ${avgFreelancerRate}</p>
+    `;
+
+    return $card
+    
+}
+
+
+function render() {
+  const $app = document.querySelector("#app");
+  $app.innerHTML = `    
+      <h1>Freelancer Cards</h1>
+      <avgRateCard></avgRateCard>
+      <freelancerCards></freelancerCards>
+      
+    `;
+    $app.querySelector("avgRateCard").replaceWith(avgRateCard());
+    $app.querySelector("freelancerCards").replaceWith(freelancerCards());
+}
+
+render()
